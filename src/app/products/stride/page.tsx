@@ -10,6 +10,7 @@ import { HumanSchedulingSection } from '@/components/sections/stride/human-sched
 import { DesignedToDisappearSection } from '@/components/sections/stride/designed-to-disappear';
 import { PrivacyAndSimplicitySection } from '@/components/sections/stride/privacy-and-simplicity';
 import { PartOfSmartProductivitySection } from '@/components/sections/stride/part-of-smart-productivity';
+import { DownloadSection } from '@/components/sections/stride/download';
 import { FinalCtaSection } from '@/components/sections/stride/final-cta';
 
 export default function StridePage() {
@@ -27,6 +28,7 @@ export default function StridePage() {
         <DesignedToDisappearSection />
         <PrivacyAndSimplicitySection />
         <PartOfSmartProductivitySection />
+        <DownloadSection />
         <FinalCtaSection />
       </main>
       <Footer />
