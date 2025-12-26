@@ -33,12 +33,10 @@ const feedbackSchema = z.object({
   name: z.string().min(1, { message: "Please enter your name." }),
   email: z.string().email("Invalid email address"),
   product: z.string(),
-  feedbackType: z.enum([
-    "bug",
-    "feature",
-    "suggestion",
-    "other",
-  ]),
+  feedbackType: z.enum(
+    ["bug", "feature", "suggestion", "other"],
+    { required_error: "Please select a feedback type." }
+  ),
   feedback: z.string().min(10, "Please provide more details."),
   priority: z.enum(["low", "medium", "high"]).optional(),
 });
@@ -89,7 +87,7 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
     if (state.success) {
       form.reset();
       onFormSuccess?.();
-    } else if (state.message && !state.success) { // only show error toast if submission failed
+    } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       toast({
         title: "Error",
         description: state.message,
