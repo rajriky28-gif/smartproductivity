@@ -1,7 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { useFormStatus } from "react-dom";
 import { subscribeToUpdates } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ function SubmitButton() {
 }
 
 export function CommunityForm() {
-  const [state, formAction] = useFormState(subscribeToUpdates, {
+  const [state, formAction] = useActionState(subscribeToUpdates, {
     message: "",
     success: false,
   });
