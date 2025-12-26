@@ -20,7 +20,7 @@ export function Footer() {
   const resourceLinks = [
     { href: "/blog", label: "Blog / Insights" },
     { href: "/#principles", label: "Productivity Principles" },
-    { href: "#", label: "Help Center" },
+    { href: "/help", label: "Help Center" },
     { href: "/feedback", label: "Feedback" },
   ];
 
