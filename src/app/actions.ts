@@ -29,7 +29,7 @@ export async function subscribeToUpdates(
   return { message: "Thank you for subscribing!", success: true };
 }
 
-export const feedbackSchema = z.object({
+const feedbackSchema = z.object({
   name: z.string().optional(),
   email: z.string().email("Invalid email address").optional().or(z.literal("")),
   product: z.string(),

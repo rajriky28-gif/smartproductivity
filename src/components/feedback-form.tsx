@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
-import { feedbackSchema, submitFeedback } from "@/app/actions";
+import { submitFeedback } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,6 +27,20 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+
+const feedbackSchema = z.object({
+  name: z.string().optional(),
+  email: z.string().email("Invalid email address").optional().or(z.literal("")),
+  product: z.string(),
+  feedbackType: z.enum([
+    "bug",
+    "feature",
+    "suggestion",
+    "other",
+  ]),
+  feedback: z.string().min(10, "Please provide more details."),
+  priority: z.enum(["low", "medium", "high"]).optional(),
+});
 
 type FeedbackFormValues = z.infer<typeof feedbackSchema>;
 
