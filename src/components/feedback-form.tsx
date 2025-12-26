@@ -29,8 +29,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 
 const feedbackSchema = z.object({
-  name: z.string().optional(),
-  email: z.string().email("Invalid email address").optional().or(z.literal("")),
+  name: z.string().min(1, { message: "Please enter your name." }),
+  email: z.string().email("Invalid email address"),
   product: z.string(),
   feedbackType: z.enum([
     "bug",
@@ -41,6 +41,7 @@ const feedbackSchema = z.object({
   feedback: z.string().min(10, "Please provide more details."),
   priority: z.enum(["low", "medium", "high"]).optional(),
 });
+
 
 type FeedbackFormValues = z.infer<typeof feedbackSchema>;
 
@@ -91,7 +92,7 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
       });
       form.reset();
       onFormSuccess?.();
-    } else if (state.message) {
+    } else if (state.message && !state.success) { // only show error toast if submission failed
       toast({
         title: "Error",
         description: state.message,
@@ -136,7 +137,7 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
             name="name"
             render={({ field }) => (
                 <FormItem>
-                <FormLabel>Name (Optional)</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
                     <Input placeholder="Your name" {...field} />
                 </FormControl>
@@ -149,7 +150,7 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
             name="email"
             render={({ field }) => (
                 <FormItem>
-                <FormLabel>Email (Optional)</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                     <Input placeholder="Your email for follow-up" {...field} />
                 </FormControl>

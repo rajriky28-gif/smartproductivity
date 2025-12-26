@@ -29,23 +29,23 @@ export async function subscribeToUpdates(
   return { message: "Thank you for subscribing!", success: true };
 }
 
-const feedbackSchema = z.object({
-  name: z.string().optional(),
-  email: z.string().email("Invalid email address").optional().or(z.literal("")),
-  product: z.string(),
-  feedbackType: z.enum([
-    "bug",
-    "feature",
-    "suggestion",
-    "other",
-  ]),
-  feedback: z.string().min(10, "Please provide more details."),
-  priority: z.enum(["low", "medium", "high"]).optional(),
-});
-
+const feedbackActionSchema = z.object({
+    name: z.string().min(1, { message: "Please enter your name." }),
+    email: z.string().email("Invalid email address"),
+    product: z.string(),
+    feedbackType: z.enum([
+      "bug",
+      "feature",
+      "suggestion",
+      "other",
+    ]),
+    feedback: z.string().min(10, "Please provide more details."),
+    priority: z.enum(["low", "medium", "high"]).optional(),
+  });
+  
 
 export async function submitFeedback(prevState: any, formData: FormData) {
-  const validatedFields = feedbackSchema.safeParse({
+  const validatedFields = feedbackActionSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     product: formData.get("product"),
