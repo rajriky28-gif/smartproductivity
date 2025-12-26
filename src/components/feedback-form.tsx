@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
@@ -86,10 +87,6 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
 
   useEffect(() => {
     if (state.success) {
-      toast({
-        title: "Feedback Submitted",
-        description: state.message,
-      });
       form.reset();
       onFormSuccess?.();
     } else if (state.message && !state.success) { // only show error toast if submission failed
@@ -99,7 +96,7 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
         variant: "destructive",
       });
     }
-  }, [state, toast, form, onFormSuccess]);
+  }, [state, form, onFormSuccess, toast]);
 
 
   return (
