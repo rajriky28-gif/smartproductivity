@@ -4,21 +4,21 @@ import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   const productLinks = [
-    { href: "#", label: "Smart Tasks" },
+    { href: "/#product", label: "Smart Tasks" },
     { href: "/#product", label: "Product Overview" },
     { href: "#", label: "Roadmap" },
-    { href: "#", label: "Updates" },
+    { href: "/blog", label: "Updates" },
   ];
 
   const companyLinks = [
     { href: "/about", label: "About Us" },
     { href: "/philosophy", label: "Philosophy" },
-    { href: "/#vision", label: "Vision" },
+    { href: "/vision", label: "Vision" },
     { href: "#", label: "Careers" },
   ];
 
   const resourceLinks = [
-    { href: "#", label: "Blog / Insights" },
+    { href: "/blog", label: "Blog / Insights" },
     { href: "/#principles", label: "Productivity Principles" },
     { href: "#", label: "Help Center" },
     { href: "/#contact", label: "Contact" },
