@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { FeedbackForm } from "@/components/feedback-form";
 import { useState } from "react";
+import { CheckCircle } from "lucide-react";
 
 interface FeedbackDialogProps {
   productName: string;
@@ -22,6 +23,16 @@ export function FeedbackDialog({
   children,
 }: FeedbackDialogProps) {
   const [open, setOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleFormSuccess = () => {
+    setIsSuccess(true);
+    setTimeout(() => {
+      setOpen(false);
+      // Reset success state after the dialog has closed
+      setTimeout(() => setIsSuccess(false), 500); 
+    }, 2000);
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -34,16 +45,4 @@ export function FeedbackDialog({
           <DialogDescription className="text-center text-muted-foreground">
             Help us improve {productName}. Your input is read carefully and
             shapes future updates.
-          </DialogDescription>
-        </DialogHeader>
-        <FeedbackForm
-          product={productName}
-          onSuccess={() => {
-            // After a delay to allow the user to see the message, close the dialog.
-            setTimeout(() => setOpen(false), 2000);
-          }}
-        />
-      </DialogContent>
-    </Dialog>
-  );
-}
+          </D<ctrl63>
