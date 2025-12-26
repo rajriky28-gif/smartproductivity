@@ -6,15 +6,15 @@ export function Footer() {
   const productLinks = [
     { href: "/products/stride", label: "Stride" },
     { href: "/products", label: "Product Overview" },
-    { href: "#", label: "Roadmap" },
+    { href: "/#", label: "Roadmap" },
     { href: "/blog", label: "Updates" },
   ];
 
   const companyLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/philosophy", label: "Philosophy" },
+    { href: "/philosophy",label: "Philosophy" },
     { href: "/vision", label: "Vision" },
-    { href: "#", label: "Careers" },
+    { href: "/careers", label: "Careers" },
   ];
 
   const resourceLinks = [
