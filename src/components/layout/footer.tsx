@@ -12,7 +12,7 @@ export function Footer() {
 
   const companyLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/#philosophy", label: "Philosophy" },
+    { href: "/philosophy", label: "Philosophy" },
     { href: "/#vision", label: "Vision" },
     { href: "#", label: "Careers" },
   ];
