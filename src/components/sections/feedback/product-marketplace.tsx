@@ -2,12 +2,13 @@
 import { FadeIn } from '@/components/fade-in';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
+import { FeedbackDialog } from '@/components/feedback-dialog';
+import { Button } from '@/components/ui/button';
 
 const products = [
   {
     name: 'Stride',
     description: 'A calm way to plan, focus, and move forward.',
-    href: '#', // Will trigger a form later
   },
 ];
 
@@ -32,12 +33,11 @@ export function ProductMarketplaceSection() {
                     {product.description}
                   </p>
                 </div>
-                <Link
-                  href={product.href}
-                  className="mt-8 text-foreground hover:underline underline-offset-4"
-                >
-                  Give Feedback →
-                </Link>
+                <FeedbackDialog productName={product.name}>
+                   <Button variant="link" className="mt-8 p-0 text-foreground hover:underline underline-offset-4 self-start">
+                    Give Feedback →
+                  </Button>
+                </FeedbackDialog>
               </Card>
             </FadeIn>
           ))}
