@@ -90,6 +90,8 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
         onFormSuccess();
       }
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
+      // This part handles validation errors returned from the server action
+      // and displays them in a toast.
       toast({
         title: "Error",
         description: state.message,
