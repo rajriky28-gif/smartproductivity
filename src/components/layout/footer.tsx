@@ -6,7 +6,7 @@ export function Footer() {
   const productLinks = [
     { href: "/products/stride", label: "Stride" },
     { href: "/products", label: "Product Overview" },
-    { href: "/#", label: "Roadmap" },
+    { href: "/roadmap", label: "Roadmap" },
     { href: "/blog", label: "Updates" },
   ];
 
