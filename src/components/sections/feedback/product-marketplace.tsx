@@ -1,7 +1,6 @@
 
 import { FadeIn } from '@/components/fade-in';
 import { Card } from '@/components/ui/card';
-import Link from 'next/link';
 import { FeedbackDialog } from '@/components/feedback-dialog';
 import { Button } from '@/components/ui/button';
 
@@ -34,7 +33,10 @@ export function ProductMarketplaceSection() {
                   </p>
                 </div>
                 <FeedbackDialog productName={product.name}>
-                   <Button variant="link" className="mt-8 p-0 text-foreground hover:underline underline-offset-4 self-start">
+                  <Button
+                    variant="link"
+                    className="mt-8 p-0 text-foreground hover:underline underline-offset-4 self-start"
+                  >
                     Give Feedback →
                   </Button>
                 </FeedbackDialog>
