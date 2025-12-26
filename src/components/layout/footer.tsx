@@ -7,7 +7,7 @@ export function Footer() {
     { href: "/products/stride", label: "Stride" },
     { href: "/products", label: "Product Overview" },
     { href: "/roadmap", label: "Roadmap" },
-    { href: "/blog", label: "Updates" },
+    { href: "/updates", label: "Updates" },
   ];
 
   const companyLinks = [
