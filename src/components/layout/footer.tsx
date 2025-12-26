@@ -21,7 +21,7 @@ export function Footer() {
     { href: "/blog", label: "Blog / Insights" },
     { href: "/#principles", label: "Productivity Principles" },
     { href: "#", label: "Help Center" },
-    { href: "/#contact", label: "Feedback" },
+    { href: "/feedback", label: "Feedback" },
   ];
 
   return (
