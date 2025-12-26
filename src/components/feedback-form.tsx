@@ -86,7 +86,9 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
   useEffect(() => {
     if (state.success) {
       form.reset();
-      onFormSuccess?.();
+      if (onFormSuccess) {
+        onFormSuccess();
+      }
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       toast({
         title: "Error",

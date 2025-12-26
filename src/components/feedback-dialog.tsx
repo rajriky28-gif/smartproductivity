@@ -41,7 +41,7 @@ export function FeedbackDialog({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[90vw] max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg">
         {!showSuccess ? (
           <>
             <DialogHeader>
@@ -65,7 +65,7 @@ export function FeedbackDialog({
               Thank You!
             </DialogTitle>
             <DialogDescription className="mt-2 text-muted-foreground">
-              Your form has been submitted successfully.
+              Your feedback has been submitted successfully.
             </DialogDescription>
             <Button onClick={() => setOpen(false)} className="mt-8">
               Close
