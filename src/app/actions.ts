@@ -68,3 +68,37 @@ export async function submitFeedback(prevState: any, formData: FormData) {
 
   return { message: "Thank you! Your feedback has been received.", success: true, errors: {} };
 }
+
+
+const contactActionSchema = z.object({
+  name: z.string().optional(),
+  email: z.string().email("Please enter a valid email address."),
+  subject: z.enum([
+    "general",
+    "partnership",
+    "press",
+    "other",
+  ]),
+  message: z.string().min(10, "Please share a bit more detail."),
+});
+
+export async function submitContactForm(prevState: any, formData: FormData) {
+  const validatedFields = contactActionSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    subject: formData.get("subject"),
+    message: formData.get("message"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Please correct the errors and try again.",
+      success: false,
+    };
+  }
+
+  console.log("New contact message:", validatedFields.data);
+
+  return { message: "Thank you for your message. We'll be in touch.", success: true, errors: {} };
+}
