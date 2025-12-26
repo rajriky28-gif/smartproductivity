@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -27,7 +27,6 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
 
 const feedbackSchema = z.object({
   name: z.string().min(1, { message: "Please enter your name." }),
@@ -69,8 +68,6 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
     errors: {},
     success: false,
   });
-
-  const [isSuccess, setIsSuccess] = useState(false);
   
   const form = useForm<FeedbackFormValues>({
     resolver: zodResolver(feedbackSchema),
@@ -88,7 +85,6 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
   useEffect(() => {
     if (state.success) {
       form.reset();
-      setIsSuccess(true);
       if (onSuccess) {
         onSuccess();
       }
@@ -100,20 +96,6 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
       });
     }
   }, [state, form, onSuccess, toast]);
-
-  if (isSuccess) {
-    return (
-      <div className="flex flex-col items-center justify-center text-center py-12 transition-opacity duration-300 animate-in fade-in">
-        <CheckCircle className="size-16 text-green-500 mb-4" />
-        <h3 className="text-2xl font-bold">
-          Thank You!
-        </h3>
-        <p className="mt-2 text-muted-foreground">
-          Your feedback has been submitted successfully.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <Form {...form}>

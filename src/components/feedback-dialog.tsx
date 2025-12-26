@@ -33,16 +33,42 @@ export function FeedbackDialog({
       setTimeout(() => setIsSuccess(false), 500); 
     }, 2000);
   };
+  
+  const handleOpenChange = (isOpen: boolean) => {
+    setOpen(isOpen);
+    // If we're closing the dialog, reset the success state
+    if (!isOpen) {
+      setTimeout(() => setIsSuccess(false), 500);
+    }
+  }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogTrigger asChild onClick={() => setOpen(true)}>{children}</DialogTrigger>
       <DialogContent className="w-[90vw] max-w-2xl rounded-lg max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">
-            Share Your Feedback
-          </DialogTitle>
-          <DialogDescription className="text-center text-muted-foreground">
-            Help us improve {productName}. Your input is read carefully and
-            shapes future updates.
-          </D<ctrl63>
+        {!isSuccess ? (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-center">
+                Share Your Feedback
+              </DialogTitle>
+              <DialogDescription className="text-center text-muted-foreground">
+                Help us improve {productName}. Your input is read carefully and
+                shapes future updates.
+              </DialogDescription>
+            </DialogHeader>
+            <FeedbackForm product={productName} onSuccess={handleFormSuccess} />
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center text-center py-12 transition-opacity duration-300 animate-in fade-in">
+            <CheckCircle className="size-16 text-green-500 mb-4" />
+            <h3 className="text-2xl font-bold">Thank You!</h3>
+            <p className="mt-2 text-muted-foreground">
+              Your feedback has been submitted successfully.
+            </p>
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
