@@ -81,13 +81,16 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
 
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  // Keep track of the last known success state to prevent multiple calls
+  const lastSuccessState = useRef(false);
 
   useEffect(() => {
-    if (state.success) {
-      form.reset();
+    if (state.success && !lastSuccessState.current) {
       if (onSuccess) {
         onSuccess();
       }
+      form.reset();
+      lastSuccessState.current = true; // Mark as handled
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       // Set form errors from the server action state
       for (const [key, value] of Object.entries(state.errors)) {
@@ -100,6 +103,9 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
         description: state.message,
         variant: "destructive",
       });
+      lastSuccessState.current = false;
+    } else if (!state.success) {
+      lastSuccessState.current = false;
     }
   }, [state, form, onSuccess, toast]);
 
@@ -109,7 +115,10 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
         ref={formRef}
         action={formAction}
         className="space-y-8 mt-4"
-        onSubmit={form.handleSubmit(() => formRef.current?.requestSubmit())}
+        onSubmit={form.handleSubmit(() => {
+          lastSuccessState.current = false; // Reset on new submission attempt
+          formRef.current?.requestSubmit();
+        })}
       >
         <FormField
           control={form.control}
