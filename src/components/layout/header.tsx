@@ -16,10 +16,10 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#product", label: "Product" },
-    { href: "#philosophy", label: "Philosophy" },
-    { href: "#vision", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#product", label: "Product" },
+    { href: "/#philosophy", label: "Philosophy" },
+    { href: "/about", label: "About" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
