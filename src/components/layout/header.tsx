@@ -20,6 +20,7 @@ export function Header() {
     { href: "/philosophy", label: "Philosophy" },
     { href: "/vision", label: "Vision" },
     { href: "/about", label: "About" },
+    { href: "/blog", label: "Blog" },
     { href: "/#contact", label: "Contact" },
   ];
 
