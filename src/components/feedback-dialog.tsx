@@ -41,7 +41,7 @@ export function FeedbackDialog({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         {!showSuccess ? (
           <>
             <DialogHeader>
