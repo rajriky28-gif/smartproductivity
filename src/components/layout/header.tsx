@@ -16,7 +16,7 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/#product", label: "Product" },
+    { href: "/stride", label: "Stride" },
     { href: "/philosophy", label: "Philosophy" },
     { href: "/vision", label: "Vision" },
     { href: "/about", label: "About" },

@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   const productLinks = [
-    { href: "/#product", label: "Stride" },
-    { href: "/#product", label: "Product Overview" },
+    { href: "/stride", label: "Stride" },
+    { href: "/stride", label: "Product Overview" },
     { href: "#", label: "Roadmap" },
     { href: "/blog", label: "Updates" },
   ];
