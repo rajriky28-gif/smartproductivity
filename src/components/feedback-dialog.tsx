@@ -44,7 +44,7 @@ export function FeedbackDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild onClick={() => setOpen(true)}>{children}</DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="w-[90vw] max-w-2xl rounded-lg max-h-[90vh] overflow-y-auto">
         {!isSuccess ? (
           <>

@@ -89,6 +89,12 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
         onSuccess();
       }
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
+      // Set form errors from the server action state
+      for (const [key, value] of Object.entries(state.errors)) {
+        if (value) {
+          form.setError(key as keyof FeedbackFormValues, { message: value[0] });
+        }
+      }
       toast({
         title: "Error",
         description: state.message,
