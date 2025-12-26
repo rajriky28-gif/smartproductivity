@@ -19,10 +19,10 @@ export function ContactOptionsSection() {
               <div>
                 <h3 className="text-lg font-semibold text-foreground">Email</h3>
                 <a
-                  href="mailto:hello@smartproductivity.com"
+                  href="mailto:hellow@smart-productivity.in"
                   className="mt-2 block text-lg text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  hello@smartproductivity.com
+                  hellow@smart-productivity.in
                 </a>
                 <p className="mt-2 text-sm text-muted-foreground/80">
                   For general inquiries, partnerships, and press.
