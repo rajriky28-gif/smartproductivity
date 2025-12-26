@@ -1,13 +1,12 @@
 
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -28,6 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const feedbackSchema = z.object({
   name: z.string().min(1, { message: "Please enter your name." }),
@@ -60,15 +60,17 @@ function SubmitButton() {
 
 interface FeedbackFormProps {
   product: string;
-  onFormSuccess?: () => void;
+  onSuccess?: () => void;
 }
 
-export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
+export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
   const [state, formAction] = useActionState(submitFeedback, {
     message: "",
     errors: {},
     success: false,
   });
+
+  const [isSuccess, setIsSuccess] = useState(false);
   
   const form = useForm<FeedbackFormValues>({
     resolver: zodResolver(feedbackSchema),
@@ -86,20 +88,32 @@ export function FeedbackForm({ product, onFormSuccess }: FeedbackFormProps) {
   useEffect(() => {
     if (state.success) {
       form.reset();
-      if (onFormSuccess) {
-        onFormSuccess();
+      setIsSuccess(true);
+      if (onSuccess) {
+        onSuccess();
       }
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
-      // This part handles validation errors returned from the server action
-      // and displays them in a toast.
       toast({
         title: "Error",
         description: state.message,
         variant: "destructive",
       });
     }
-  }, [state, form, onFormSuccess, toast]);
+  }, [state, form, onSuccess, toast]);
 
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center py-12 transition-opacity duration-300 animate-in fade-in">
+        <CheckCircle className="size-16 text-green-500 mb-4" />
+        <h3 className="text-2xl font-bold">
+          Thank You!
+        </h3>
+        <p className="mt-2 text-muted-foreground">
+          Your feedback has been submitted successfully.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <Form {...form}>
