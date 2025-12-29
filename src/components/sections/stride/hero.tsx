@@ -8,7 +8,7 @@ const appImage = PlaceHolderImages.find((p) => p.id === "app-screenshot-abstract
 
 export function HeroSection() {
   return (
-    <section className="relative bg-white dark:bg-background h-[90vh] min-h-[700px] flex items-center">
+    <section className="relative bg-white dark:bg-background h-[90vh] min-h-[700px] flex items-center z-0">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <FadeIn>
