@@ -49,31 +49,31 @@ export function Header() {
       <div
         className={cn(
           "container mx-auto flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-20 px-4 md:px-6" : "h-24 px-4"
+          scrolled ? "h-16 px-4 md:px-6" : "h-24 px-4"
         )}
       >
         <Link
           href="/"
-          className={cn("flex items-center gap-1 text-lg font-bold text-foreground transition-all duration-300")}
+          className={cn("flex items-center gap-2 text-lg font-bold text-foreground transition-all duration-300")}
         >
           <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
             width={scrolled ? 40 : 60}
             height={scrolled ? 40 : 60}
-            className={cn("transition-all duration-300 md:hidden")}
+            className={cn("transition-all duration-300 md:hidden", scrolled && "md:hidden")}
           />
            <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
-            width={scrolled ? 144 : 60}
-            height={scrolled ? 144 : 60}
-            className={cn("transition-all duration-300 hidden md:block")}
+            width={60}
+            height={60}
+            className={cn("transition-all duration-300 hidden md:block", scrolled && "!hidden")}
           />
           <span
             className={cn(
               "transition-all duration-300 text-xl",
-              scrolled ? "md:sr-only" : "md:inline",
+               scrolled ? "md:inline" : "md:inline",
               "inline" 
             )}
           >
