@@ -118,7 +118,7 @@ const articles = [
     title: 'Advanced Planning: Priorities, Rescheduling & Tags',
     description: 'How to organize a chaotic schedule and manage overdue items.',
     content: (
-        <div className="prose prose-lg dark:prose_invert max-w-none text-foreground/90">
+        <div className="prose prose-lg dark:prose-invert max-w-none text-foreground/90">
             <p>Stride is not just a list; it is a planner. Here is how to keep your life organized when things get busy.</p>
             <h4>Using Priority Levels</h4>
             <p>Assigning priorities helps you decide what to do <em>first</em>.</p>
@@ -199,7 +199,7 @@ export function ArticlesSection() {
       <div className="container mx-auto px-4">
         <FadeIn className="mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center">
-            Help articles
+            Frequently Asked Questions
           </h2>
         </FadeIn>
         <div className="max-w-3xl mx-auto">

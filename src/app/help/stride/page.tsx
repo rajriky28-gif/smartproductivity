@@ -5,6 +5,7 @@ import { ProductSearchSection } from '@/components/sections/help/stride/product-
 import { ArticlesSection } from '@/components/sections/help/stride/articles';
 import { NeedHelpSection } from '@/components/sections/help/stride/need-help';
 import { CrossNavSection } from '@/components/sections/help/stride/cross-nav';
+import { CategoriesSection } from '@/components/sections/help/stride/categories';
 
 export default function StrideHelpPage() {
   return (
@@ -13,6 +14,7 @@ export default function StrideHelpPage() {
       <main className="flex-1">
         <ProductHeaderSection />
         <ProductSearchSection />
+        <CategoriesSection />
         <ArticlesSection />
         <NeedHelpSection />
         <CrossNavSection />
