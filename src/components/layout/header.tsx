@@ -49,7 +49,7 @@ export function Header() {
       <div
         className={cn(
           "container mx-auto flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-16 md:h-20 px-4 md:px-6" : "h-24 px-4"
+          scrolled ? "h-16 px-4 md:px-6" : "h-24 px-4"
         )}
       >
         <Link
