@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Twitter, Github } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -97,7 +98,7 @@ export function Footer() {
             <p>© {new Date().getFullYear()} Smart Productivity. All rights reserved.</p>
             <div className="flex gap-4 mt-2 justify-center sm:justify-start">
               <Link
-                href="#"
+                href="/privacy"
                 className="hover:text-foreground transition-colors hover:underline underline-offset-4"
               >
                 Privacy Policy
