@@ -9,9 +9,10 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Set initial state
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -27,14 +28,25 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b border-border transition-all duration-300",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
         scrolled
-          ? "h-14 bg-background/80 backdrop-blur-sm"
-          : "h-16 bg-background"
+          ? "w-auto rounded-full border border-border/50 bg-background/80 shadow-md backdrop-blur-lg"
+          : "w-full"
       )}
     >
-      <div className="container mx-auto flex h-full items-center justify-between px-4">
-        <Link href="/" className="text-lg font-bold text-foreground">
+      <div
+        className={cn(
+          "container mx-auto flex items-center justify-between transition-all duration-300",
+          scrolled ? "h-14 px-6" : "h-20 px-4"
+        )}
+      >
+        <Link
+          href="/"
+          className={cn(
+            "text-lg font-bold text-foreground transition-all duration-300",
+            scrolled ? "text-base" : "text-lg"
+          )}
+        >
           Smart Productivity
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
@@ -45,7 +57,12 @@ export function Header() {
               className="group text-sm text-muted-foreground transition-colors"
             >
               <span className="group-hover:text-foreground">{link.label}</span>
-              <div className="mt-0.5 h-px w-full origin-left scale-x-0 bg-foreground transition-transform duration-300 group-hover:scale-x-100" />
+              <div
+                className={cn(
+                  "mt-0.5 h-px w-full origin-left scale-x-0 bg-foreground transition-transform duration-300 group-hover:scale-x-100",
+                  scrolled && "bg-muted-foreground"
+                )}
+              />
             </Link>
           ))}
         </nav>
