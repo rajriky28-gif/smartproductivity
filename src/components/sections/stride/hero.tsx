@@ -5,22 +5,22 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative bg-white dark:bg-background h-[90vh] min-h-[700px] flex items-center">
+    <section className="relative bg-white dark:bg-background pt-32 pb-16 md:pt-0 md:h-[90vh] md:min-h-[700px] flex items-center">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <FadeIn>
-            <div className="text-left relative z-10">
+            <div className="text-center md:text-left relative z-10">
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                 Stride
               </h1>
               <p className="mt-4 text-xl text-muted-foreground">
                 A calmer way to plan, focus, and move forward.
               </p>
-              <p className="mt-6 max-w-lg text-lg text-foreground/80">
+              <p className="mt-6 max-w-lg mx-auto md:mx-0 text-lg text-foreground/80">
                 Stride is a thoughtfully designed task system that turns
                 intention into action — without clutter, pressure, or noise.
               </p>
-              <div className="mt-8 flex gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Button asChild size="lg">
                   <Link href="#">Get early access →</Link>
                 </Button>

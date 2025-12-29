@@ -16,7 +16,7 @@ export function WeeklyReportsSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <FadeIn>
-            <div>
+            <div className="text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
                 Weekly reports that inform, not judge
               </h2>
