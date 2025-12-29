@@ -38,7 +38,7 @@ export function Header() {
       <div
         className={cn(
           "container mx-auto flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-14 px-6" : "h-20 px-4"
+          scrolled ? "h-16 px-6" : "h-24 px-4"
         )}
       >
         <Link
@@ -48,13 +48,13 @@ export function Header() {
           <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
-            width={scrolled ? 36 : 32}
-            height={scrolled ? 36 : 32}
+            width={scrolled ? 48 : 40}
+            height={scrolled ? 48 : 40}
             className="transition-all duration-300"
           />
           <span
             className={cn(
-              "transition-all duration-300",
+              "transition-all duration-300 text-xl",
               scrolled ? "sr-only" : "inline"
             )}
           >
