@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -11,7 +10,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Set initial state
@@ -44,16 +43,23 @@ export function Header() {
       >
         <Link
           href="/"
-          className={cn(
-            "text-lg font-bold text-foreground transition-all duration-300",
-            scrolled ? "text-base" : "text-lg"
-          )}
+          className="flex items-center gap-3 text-lg font-bold text-foreground transition-all duration-300"
         >
-          {scrolled ? (
-            <Image src="/smartproductivitylogo.png" alt="Smart Productivity Logo" width={24} height={24} className="h-6 w-6" />
-          ) : (
-            "Smart Productivity"
-          )}
+          <Image
+            src="/smartproductivitylogo.png"
+            alt="Smart Productivity Logo"
+            width={scrolled ? 28 : 24}
+            height={scrolled ? 28 : 24}
+            className="transition-all duration-300"
+          />
+          <span
+            className={cn(
+              "transition-all duration-300",
+              scrolled ? "sr-only" : "inline"
+            )}
+          >
+            Smart Productivity
+          </span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
