@@ -27,10 +27,7 @@ export async function subscribeToUpdates(
   // Here you would typically save the email to a database or a mailing list service.
   console.log("New subscription:", validatedFields.data.email);
 
-  return {
-    message: "Thank you for subscribing!",
-    success: true,
-  }
+  redirect('/success');
 }
 
 const feedbackActionSchema = z.object({
@@ -69,30 +66,25 @@ export async function submitFeedback(prevState: any, formData: FormData) {
   // Here you would typically save the feedback to a database.
   console.log("New feedback received:", validatedFields.data);
 
-  return {
-    message: "Thank you for your feedback.",
-    success: true,
-  }
+  redirect('/success');
 }
 
 
 const contactActionSchema = z.object({
   name: z.string().optional(),
   email: z.string().email("Please enter a valid email address."),
-  subject: z.enum([
-    "general",
-    "partnership",
-    "press",
-    "other",
-  ]),
+  subject: z.enum(
+    ["general", "partnership", "press", "other", "getting-started", "feature-question", "bug-issue"]
+  ).optional(),
   message: z.string().min(10, "Please share a bit more detail."),
 });
 
 export async function submitContactForm(prevState: any, formData: FormData) {
+  const subject = formData.get("topic") || formData.get("subject");
   const validatedFields = contactActionSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
-    subject: formData.get("subject"),
+    subject: subject,
     message: formData.get("message"),
   });
 
@@ -106,8 +98,5 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   console.log("New contact message:", validatedFields.data);
 
-  return {
-    message: "Thank you. Your message has been received.",
-    success: true,
-  }
+  redirect('/success');
 }
