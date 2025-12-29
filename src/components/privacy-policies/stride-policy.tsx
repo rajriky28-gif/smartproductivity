@@ -1,3 +1,4 @@
+
 import {
   Accordion,
   AccordionContent,
@@ -9,7 +10,7 @@ export function StridePolicy() {
   return (
     <div>
       <p className="mb-4">
-        Smart Productivity ("we," "our," or "us") operates the Stride mobile
+        Smart Productivity operates the Stride mobile
         application. This page informs you of our policies regarding the
         collection, use, and disclosure of personal data when you use our
         Service.
