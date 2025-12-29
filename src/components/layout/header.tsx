@@ -42,14 +42,14 @@ export function Header() {
       className={cn(
         "fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
         scrolled
-          ? "top-4 w-auto rounded-full border border-border/50 bg-background/80 shadow-md backdrop-blur-lg"
+          ? "top-4 w-[calc(100%-2rem)] md:w-auto rounded-full border border-border/50 bg-background/80 shadow-md backdrop-blur-lg"
           : "top-0 w-full"
       )}
     >
       <div
         className={cn(
           "container mx-auto flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-20 px-6" : "h-24 px-4"
+          scrolled ? "h-16 md:h-20 px-4 md:px-6" : "h-24 px-4"
         )}
       >
         <Link
@@ -59,14 +59,21 @@ export function Header() {
           <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
+            width={scrolled ? 40 : 60}
+            height={scrolled ? 40 : 60}
+            className={cn("transition-all duration-300 md:hidden")}
+          />
+           <Image
+            src="/smartproductivitylogo.png"
+            alt="Smart Productivity Logo"
             width={scrolled ? 192 : 60}
             height={scrolled ? 192 : 60}
-            className="transition-all duration-300"
+            className={cn("transition-all duration-300 hidden md:block")}
           />
           <span
             className={cn(
               "transition-all duration-300 text-xl",
-              scrolled ? "sr-only" : "inline"
+              scrolled ? "md:sr-only" : "inline"
             )}
           >
             Smart Productivity
