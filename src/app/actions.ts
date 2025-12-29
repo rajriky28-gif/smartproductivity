@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { redirect } from 'next/navigation';
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -23,10 +24,9 @@ export async function subscribeToUpdates(
   }
 
   // Here you would typically save the email to a database or a mailing list service.
-  // For this example, we'll just simulate a success response.
   console.log("New subscription:", validatedFields.data.email);
 
-  return { message: "Thank you for subscribing!", success: true };
+  redirect('/success');
 }
 
 const feedbackActionSchema = z.object({
@@ -63,10 +63,9 @@ export async function submitFeedback(prevState: any, formData: FormData) {
   }
 
   // Here you would typically save the feedback to a database.
-  // For this example, we'll just log the data to the console.
   console.log("New feedback received:", validatedFields.data);
 
-  return { message: "Thank you! Your feedback has been received.", success: true, errors: {} };
+  redirect('/success');
 }
 
 
@@ -100,5 +99,5 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   console.log("New contact message:", validatedFields.data);
 
-  return { message: "Thank you for your message. We'll be in touch.", success: true, errors: {} };
+  redirect('/success');
 }

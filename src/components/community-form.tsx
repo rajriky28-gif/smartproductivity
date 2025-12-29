@@ -12,7 +12,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" variant="link" className="text-foreground p-0 h-auto" disabled={pending}>
-      Join early updates
+      {pending ? 'Joining...' : 'Join early updates'}
       <ArrowRight className="ml-2 size-4" />
     </Button>
   );
@@ -27,20 +27,12 @@ export function CommunityForm() {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        toast({
-          title: "Subscribed!",
-          description: state.message,
-        });
-        formRef.current?.reset();
-      } else {
-        toast({
-          title: "Error",
-          description: state.message,
-          variant: "destructive",
-        });
-      }
+    if (state.message && !state.success) {
+      toast({
+        title: "Error",
+        description: state.message,
+        variant: "destructive",
+      });
     }
   }, [state, toast]);
 

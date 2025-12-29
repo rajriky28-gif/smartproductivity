@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle, Paperclip } from "lucide-react";
+import { Paperclip } from "lucide-react";
 
 const helpRequestSchema = z.object({
   name: z.string().optional(),
@@ -69,7 +69,6 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
     success: false,
   });
 
-  const [isSuccess, setIsSuccess] = useState(false);
   const form = useForm<HelpFormValues>({
     resolver: zodResolver(helpRequestSchema),
     defaultValues: {
@@ -82,14 +81,9 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
 
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
-  const lastSuccessState = useRef(false);
 
   useEffect(() => {
-    if (state.success && !lastSuccessState.current) {
-      setIsSuccess(true);
-      form.reset();
-      lastSuccessState.current = true;
-    } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
+    if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       for (const [key, value] of Object.entries(state.errors)) {
         if (value) {
           form.setError(key as keyof HelpFormValues, { message: value[0] });
@@ -100,23 +94,9 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
         description: state.message,
         variant: "destructive",
       });
-      lastSuccessState.current = false;
-    } else if (!state.success) {
-      lastSuccessState.current = false;
     }
   }, [state, form, toast]);
 
-  if (isSuccess) {
-    return (
-      <div className="flex flex-col items-center justify-center text-center p-8 border rounded-lg bg-muted/50 h-full">
-        <CheckCircle className="size-12 text-green-500 mb-4" />
-        <h3 className="text-xl font-bold">Request Sent</h3>
-        <p className="mt-2 text-muted-foreground">
-          Thank you for your message. We'll be in touch.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <Form {...form}>
@@ -125,7 +105,6 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
         action={formAction}
         className="space-y-6"
         onSubmit={form.handleSubmit(() => {
-          lastSuccessState.current = false;
           formRef.current?.requestSubmit();
         })}
       >

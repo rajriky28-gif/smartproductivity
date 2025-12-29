@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -73,13 +73,7 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.success) {
-        toast({
-            title: "Thank You!",
-            description: "Your message has been sent successfully.",
-        });
-      form.reset();
-    } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
+    if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       for (const [key, value] of Object.entries(state.errors)) {
         if (value) {
           form.setError(key as keyof ContactFormValues, { message: value[0] });
