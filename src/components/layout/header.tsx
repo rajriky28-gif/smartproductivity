@@ -4,9 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { Button } from "../ui/button";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,12 +47,12 @@ export function Header() {
       <div
         className={cn(
           "container mx-auto flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-16 px-6" : "h-24 px-4"
+          scrolled ? "h-20 px-6" : "h-24 px-4"
         )}
       >
         <Link
           href="/"
-          className="flex items-center gap-1 text-lg font-bold text-foreground transition-all duration-300"
+          className={cn("flex items-center gap-1 text-lg font-bold text-foreground transition-all duration-300")}
         >
           <Image
             src="/smartproductivitylogo.png"
@@ -78,6 +87,43 @@ export function Header() {
             </Link>
           ))}
         </nav>
+        <div className="md:hidden">
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="size-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <nav className="grid gap-y-8 pt-12">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Image
+                    src="/smartproductivitylogo.png"
+                    alt="Smart Productivity Logo"
+                    width={40}
+                    height={40}
+                  />
+                  <span className="font-bold text-lg">Smart Productivity</span>
+                </Link>
+                {navLinks.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-lg text-muted-foreground hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
