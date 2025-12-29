@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -26,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().optional(),
@@ -73,6 +73,9 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
+    if (state.success) {
+      form.reset();
+    }
     if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       for (const [key, value] of Object.entries(state.errors)) {
         if (value) {
@@ -86,6 +89,20 @@ export function ContactForm() {
       });
     }
   }, [state, form, toast]);
+
+  if (state.success) {
+    return (
+        <div className="flex flex-col items-center justify-center gap-4 text-center rounded-lg border bg-muted/50 p-8 h-full min-h-[400px]">
+            <CheckCircle className="size-12 text-green-500" />
+            <h3 className="text-2xl font-bold text-foreground">
+              Thank you.
+            </h3>
+            <p className="text-muted-foreground">
+              Your message has been received. We read every message carefully.
+            </p>
+        </div>
+    );
+  }
 
 
   return (

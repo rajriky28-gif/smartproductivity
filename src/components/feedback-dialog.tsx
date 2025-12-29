@@ -23,10 +23,9 @@ export function FeedbackDialog({
 }: FeedbackDialogProps) {
   const [open, setOpen] = useState(false);
 
-  const handleFormSuccess = () => {
-    // With redirection, we might not even need this callback.
-    // The dialog will close as the page changes.
-    setOpen(false);
+  const handleSuccess = () => {
+    // Keep dialog open to show success message,
+    // feedback-form will handle showing the message.
   };
 
   return (
@@ -42,7 +41,7 @@ export function FeedbackDialog({
             shapes future updates.
           </DialogDescription>
         </DialogHeader>
-        <FeedbackForm product={productName} onSuccess={handleFormSuccess} />
+        <FeedbackForm product={productName} onSuccess={handleSuccess} />
       </DialogContent>
     </Dialog>
   );

@@ -5,8 +5,9 @@ import { useFormStatus } from "react-dom";
 import { subscribeToUpdates } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -27,14 +28,27 @@ export function CommunityForm() {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (state.message && !state.success) {
-      toast({
-        title: "Error",
-        description: state.message,
-        variant: "destructive",
-      });
+    if (state.message) {
+      if (state.success) {
+        formRef.current?.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: state.message,
+          variant: "destructive",
+        });
+      }
     }
   }, [state, toast]);
+
+  if (state.success) {
+    return (
+      <div className="mt-8 flex w-full max-w-md mx-auto items-center justify-center space-x-2 text-center">
+        <CheckCircle className="size-6 text-green-500" />
+        <p className="text-lg text-muted-foreground">{state.message}</p>
+      </div>
+    );
+  }
 
   return (
     <form

@@ -20,13 +20,17 @@ export async function subscribeToUpdates(
       message:
         validatedFields.error.flatten().fieldErrors.email?.[0] ||
         "Invalid email.",
+      success: false,
     };
   }
 
   // Here you would typically save the email to a database or a mailing list service.
   console.log("New subscription:", validatedFields.data.email);
 
-  redirect('/success');
+  return {
+    message: "Thank you for subscribing!",
+    success: true,
+  }
 }
 
 const feedbackActionSchema = z.object({
@@ -65,7 +69,10 @@ export async function submitFeedback(prevState: any, formData: FormData) {
   // Here you would typically save the feedback to a database.
   console.log("New feedback received:", validatedFields.data);
 
-  redirect('/success');
+  return {
+    message: "Thank you for your feedback.",
+    success: true,
+  }
 }
 
 
@@ -99,5 +106,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   console.log("New contact message:", validatedFields.data);
 
-  redirect('/success');
+  return {
+    message: "Thank you. Your message has been received.",
+    success: true,
+  }
 }

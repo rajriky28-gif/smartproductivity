@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -27,6 +26,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const feedbackSchema = z.object({
   name: z.string().min(1, { message: "Please enter your name." }),
@@ -83,6 +83,10 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   
   useEffect(() => {
+    if (state.success) {
+      form.reset();
+      onSuccess?.();
+    }
     if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       // Set form errors from the server action state
       for (const [key, value] of Object.entries(state.errors)) {
@@ -96,7 +100,21 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
         variant: "destructive",
       });
     }
-  }, [state, form, toast]);
+  }, [state, form, toast, onSuccess]);
+
+  if (state.success) {
+    return (
+        <div className="flex flex-col items-center justify-center gap-4 text-center rounded-lg p-8 min-h-[400px]">
+            <CheckCircle className="size-12 text-green-500" />
+            <h3 className="text-2xl font-bold text-foreground">
+              Thank you.
+            </h3>
+            <p className="text-muted-foreground">
+              {state.message}
+            </p>
+        </div>
+    );
+  }
 
   return (
     <Form {...form}>
