@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/fade-in";
 import Image from "next/image";
 import { StridePolicy } from "@/components/privacy-policies/stride-policy";
 import { PlatformPolicy } from "@/components/privacy-policies/platform-policy";
+import { cn } from "@/lib/utils";
 
 const productDetails: { [key: string]: any } = {
   stride: {
