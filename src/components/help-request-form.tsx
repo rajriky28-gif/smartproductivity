@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Paperclip } from "lucide-react";
+import { Paperclip, CheckCircle } from "lucide-react";
 
 const helpRequestSchema = z.object({
   name: z.string().optional(),
@@ -60,13 +60,13 @@ interface HelpRequestFormProps {
 }
 
 export function HelpRequestForm({ product }: HelpRequestFormProps) {
-  // NOTE: This form currently uses the `submitContactForm` server action.
-  // In a real application, you would create a dedicated `submitHelpRequest` action.
   const [state, formAction] = useActionState(submitContactForm, {
     message: "",
     errors: {},
     success: false,
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const form = useForm<HelpFormValues>({
     resolver: zodResolver(helpRequestSchema),
@@ -82,7 +82,7 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
+    if (state?.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       for (const [key, value] of Object.entries(state.errors)) {
         if (value) {
           form.setError(key as keyof HelpFormValues, { message: value[0] });
@@ -93,8 +93,23 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
         description: state.message,
         variant: "destructive",
       });
+      setSubmitted(false); 
     }
   }, [state, form, toast]);
+
+  if (submitted) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-4 text-center rounded-lg p-8 min-h-[400px]">
+        <CheckCircle className="size-12 text-green-500" />
+        <h3 className="text-2xl font-bold text-foreground">
+          Thank you.
+        </h3>
+        <p className="text-muted-foreground">
+          Your request has been sent successfully. We read every message carefully.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <Form {...form}>
@@ -102,9 +117,14 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
         ref={formRef}
         action={formAction}
         className="space-y-6"
-        onSubmit={form.handleSubmit(() => {
-          formRef.current?.requestSubmit();
-        })}
+        onSubmit={(evt) => {
+          const formElement = evt.target as HTMLFormElement;
+          const formData = new FormData(formElement);
+          form.handleSubmit(() => {
+            setSubmitted(true);
+            formAction(formData);
+          })(evt);
+        }}
       >
         <input type="hidden" {...form.register("product")} />
         <FormField
