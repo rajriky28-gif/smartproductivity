@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,10 +29,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
+        "fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
         scrolled
-          ? "w-auto rounded-full border border-border/50 bg-background/80 shadow-md backdrop-blur-lg"
-          : "w-full"
+          ? "top-4 w-auto rounded-full border border-border/50 bg-background/80 shadow-md backdrop-blur-lg"
+          : "top-0 w-full"
       )}
     >
       <div
