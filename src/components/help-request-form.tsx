@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
@@ -203,7 +204,7 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
               <FormLabel>Attachment (optional)</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Input type="file" className="pl-12" {...field} />
+                  <Input type="file" className="pl-12" />
                    <Paperclip className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 </div>
               </FormControl>

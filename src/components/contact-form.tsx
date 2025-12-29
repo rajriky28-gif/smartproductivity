@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
@@ -25,7 +26,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().optional(),
@@ -60,7 +60,6 @@ export function ContactForm() {
     success: false,
   });
   
-  const [isSuccess, setIsSuccess] = useState(false);
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -72,13 +71,14 @@ export function ContactForm() {
 
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
-  const lastSuccessState = useRef(false);
 
   useEffect(() => {
-    if (state.success && !lastSuccessState.current) {
-      setIsSuccess(true);
+    if (state.success) {
+        toast({
+            title: "Thank You!",
+            description: "Your message has been sent successfully.",
+        });
       form.reset();
-      lastSuccessState.current = true;
     } else if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
       for (const [key, value] of Object.entries(state.errors)) {
         if (value) {
@@ -90,23 +90,9 @@ export function ContactForm() {
         description: state.message,
         variant: "destructive",
       });
-      lastSuccessState.current = false;
-    } else if (!state.success) {
-      lastSuccessState.current = false;
     }
   }, [state, form, toast]);
 
-  if (isSuccess) {
-    return (
-      <div className="flex flex-col items-center justify-center text-center p-8 border rounded-lg bg-muted/50 h-full">
-        <CheckCircle className="size-12 text-green-500 mb-4" />
-        <h3 className="text-xl font-bold">Thank You</h3>
-        <p className="mt-2 text-muted-foreground">
-          Your message has been sent successfully.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <Form {...form}>
@@ -115,7 +101,6 @@ export function ContactForm() {
         action={formAction}
         className="space-y-6"
         onSubmit={form.handleSubmit(() => {
-          lastSuccessState.current = false;
           formRef.current?.requestSubmit();
         })}
       >

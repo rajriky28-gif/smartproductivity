@@ -12,6 +12,7 @@ import {
 import { FeedbackForm } from "@/components/feedback-form";
 import { useState } from "react";
 import { CheckCircle } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface FeedbackDialogProps {
   productName: string;
@@ -27,11 +28,6 @@ export function FeedbackDialog({
 
   const handleFormSuccess = () => {
     setIsSuccess(true);
-    setTimeout(() => {
-      setOpen(false);
-      // Reset success state after the dialog has closed
-      setTimeout(() => setIsSuccess(false), 500); 
-    }, 2000);
   };
   
   const handleOpenChange = (isOpen: boolean) => {
@@ -40,6 +36,11 @@ export function FeedbackDialog({
     if (!isOpen) {
       setTimeout(() => setIsSuccess(false), 500);
     }
+  }
+
+  const handleCloseSuccess = () => {
+    setOpen(false);
+    setTimeout(() => setIsSuccess(false), 500);
   }
 
   return (
@@ -66,6 +67,9 @@ export function FeedbackDialog({
             <p className="mt-2 text-muted-foreground">
               Your feedback has been submitted successfully.
             </p>
+            <Button onClick={handleCloseSuccess} variant="outline" className="mt-8">
+                Close
+            </Button>
           </div>
         )}
       </DialogContent>
