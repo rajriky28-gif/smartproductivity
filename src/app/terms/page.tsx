@@ -10,11 +10,15 @@ import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 function AllTerms() {
-    const policies = [
+    const searchParams = useSearchParams();
+    const selectedTerm = searchParams.get('product');
+
+    const allTerms = [
     {
       id: "stride",
       logo: "/stridelogo.png",
@@ -33,10 +37,14 @@ function AllTerms() {
     },
   ];
 
+  const terms = selectedTerm
+    ? allTerms.filter(t => t.id === selectedTerm)
+    : allTerms;
+
   return (
      <section className="bg-muted py-24 sm:py-32">
         <div className="container mx-auto px-4">
-            {policies.map((details, index) => (
+            {terms.map((details, index) => (
                 <div key={details.id}>
                     <FadeIn>
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
@@ -67,7 +75,7 @@ function AllTerms() {
                             {details.content}
                         </div>
                     </FadeIn>
-                    {index < policies.length - 1 && <Separator className="my-16 sm:my-24" />}
+                    {index < terms.length - 1 && <Separator className="my-16 sm:my-24" />}
                 </div>
             ))}
         </div>
@@ -82,7 +90,7 @@ export default function TermsPage() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <Suspense>
+        <Suspense fallback={<div>Loading terms...</div>}>
           <AllTerms />
         </Suspense>
         <ContactSection />

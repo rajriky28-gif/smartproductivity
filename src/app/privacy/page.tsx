@@ -10,11 +10,15 @@ import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 function AllPolicies() {
-  const policies = [
+  const searchParams = useSearchParams();
+  const selectedPolicy = searchParams.get('product');
+
+  const allPolicies = [
     {
       id: "stride",
       logo: "/stridelogo.png",
@@ -32,6 +36,11 @@ function AllPolicies() {
       content: <PlatformPolicy />,
     },
   ];
+
+  const policies = selectedPolicy 
+    ? allPolicies.filter(p => p.id === selectedPolicy)
+    : allPolicies;
+
 
   return (
     <section className="bg-muted py-24 sm:py-32">
@@ -81,7 +90,7 @@ export default function PrivacyPage() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <Suspense>
+        <Suspense fallback={<div>Loading policies...</div>}>
          <AllPolicies />
         </Suspense>
         <ContactSection />
