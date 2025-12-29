@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useState, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -25,7 +25,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 
 const feedbackSchema = z.object({
@@ -79,30 +78,10 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
     },
   });
 
-  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  const [submitted, setSubmitted] = useState(false);
   
-  useEffect(() => {
-    if (state.success) {
-      form.reset();
-      onSuccess?.();
-    }
-    if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
-      // Set form errors from the server action state
-      for (const [key, value] of Object.entries(state.errors)) {
-        if (value) {
-          form.setError(key as keyof FeedbackFormValues, { message: value[0] });
-        }
-      }
-      toast({
-        title: "Error",
-        description: state.message,
-        variant: "destructive",
-      });
-    }
-  }, [state, form, toast, onSuccess]);
-
-  if (state.success) {
+  if (submitted) {
     return (
         <div className="flex flex-col items-center justify-center gap-4 text-center rounded-lg p-8 min-h-[400px]">
             <CheckCircle className="size-12 text-green-500" />
@@ -110,7 +89,7 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
               Thank you.
             </h3>
             <p className="text-muted-foreground">
-              {state.message}
+              Your feedback has been submitted.
             </p>
         </div>
     );
@@ -122,9 +101,12 @@ export function FeedbackForm({ product, onSuccess }: FeedbackFormProps) {
         ref={formRef}
         action={formAction}
         className="space-y-8 mt-4"
-        onSubmit={form.handleSubmit(() => {
-          formRef.current?.requestSubmit();
-        })}
+        onSubmit={(evt) => {
+            form.handleSubmit(() => {
+                setSubmitted(true);
+                onSuccess?.();
+            })(evt);
+        }}
       >
         <FormField
           control={form.control}

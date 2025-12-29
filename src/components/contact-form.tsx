@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useState, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/app/actions";
 import { useForm } from "react-hook-form";
@@ -24,7 +24,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 
 const contactSchema = z.object({
@@ -69,28 +68,10 @@ export function ContactForm() {
     },
   });
 
-  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (state.success) {
-      form.reset();
-    }
-    if (state.message && !state.success && Object.keys(state.errors ?? {}).length > 0) {
-      for (const [key, value] of Object.entries(state.errors)) {
-        if (value) {
-          form.setError(key as keyof ContactFormValues, { message: value[0] });
-        }
-      }
-      toast({
-        title: "Error",
-        description: state.message,
-        variant: "destructive",
-      });
-    }
-  }, [state, form, toast]);
-
-  if (state.success) {
+  if (submitted) {
     return (
         <div className="flex flex-col items-center justify-center gap-4 text-center rounded-lg border bg-muted/50 p-8 h-full min-h-[400px]">
             <CheckCircle className="size-12 text-green-500" />
@@ -111,9 +92,11 @@ export function ContactForm() {
         ref={formRef}
         action={formAction}
         className="space-y-6"
-        onSubmit={form.handleSubmit(() => {
-          formRef.current?.requestSubmit();
-        })}
+        onSubmit={(evt) => {
+          const promise = form.handleSubmit(() => {
+            setSubmitted(true);
+          })(evt);
+        }}
       >
         <FormField
           control={form.control}

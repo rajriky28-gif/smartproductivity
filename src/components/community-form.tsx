@@ -1,13 +1,11 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useState, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { subscribeToUpdates } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -24,28 +22,14 @@ export function CommunityForm() {
     message: "",
     success: false,
   });
+  const [submitted, setSubmitted] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const { toast } = useToast();
 
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        formRef.current?.reset();
-      } else {
-        toast({
-          title: "Error",
-          description: state.message,
-          variant: "destructive",
-        });
-      }
-    }
-  }, [state, toast]);
-
-  if (state.success) {
+  if (submitted) {
     return (
       <div className="mt-8 flex w-full max-w-md mx-auto items-center justify-center space-x-2 text-center">
         <CheckCircle className="size-6 text-green-500" />
-        <p className="text-lg text-muted-foreground">{state.message}</p>
+        <p className="text-lg text-muted-foreground">Thank you for subscribing!</p>
       </div>
     );
   }
@@ -54,6 +38,9 @@ export function CommunityForm() {
     <form
       ref={formRef}
       action={formAction}
+      onSubmit={() => {
+        setSubmitted(true);
+      }}
       className="mt-8 flex w-full max-w-md mx-auto items-center space-x-2 border-b border-foreground"
     >
       <Input
