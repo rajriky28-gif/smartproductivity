@@ -45,7 +45,7 @@ export function WeeklyReportsSection() {
               <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
               <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
               <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-              <div className="rounded-[2rem] overflow-hidden w-full h-full bg-muted dark:bg-zinc-800 p-8 flex flex-col justify-center">
+              <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-zinc-800">
                 <Image
                     src="/report.jpeg"
                     alt="Stride Weekly Report interface"
