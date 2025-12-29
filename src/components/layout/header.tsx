@@ -48,8 +48,8 @@ export function Header() {
           <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
-            width={scrolled ? 28 : 24}
-            height={scrolled ? 28 : 24}
+            width={scrolled ? 36 : 32}
+            height={scrolled ? 36 : 32}
             className="transition-all duration-300"
           />
           <span
