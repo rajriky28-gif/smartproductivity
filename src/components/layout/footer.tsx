@@ -104,7 +104,7 @@ export function Footer() {
                 Privacy Policy
               </Link>
               <Link
-                href="#"
+                href="/terms"
                 className="hover:text-foreground transition-colors hover:underline underline-offset-4"
               >
                 Terms of Use
