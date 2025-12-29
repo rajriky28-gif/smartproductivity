@@ -9,11 +9,11 @@ export function ProductHeaderSection() {
           <FadeIn>
             <div className="flex flex-col gap-4 text-center md:text-left">
               <Image
-                src="/smartproductivitylogo.png"
+                src="/stridelogo.png"
                 alt="Stride Logo"
                 width={64}
                 height={64}
-                className="mx-auto md:mx-0"
+                className="mx-auto md:mx-0 border rounded-lg"
               />
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
                 Stride
