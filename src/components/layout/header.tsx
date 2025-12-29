@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -58,8 +59,8 @@ export function Header() {
           <Image
             src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
-            width={scrolled ? 48 : 60}
-            height={scrolled ? 48 : 60}
+            width={scrolled ? 192 : 60}
+            height={scrolled ? 192 : 60}
             className="transition-all duration-300"
           />
           <span
