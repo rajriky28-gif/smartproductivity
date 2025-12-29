@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import Image from "next/image";
 import { FadeIn } from "@/components/fade-in";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -13,11 +14,13 @@ const products = [
     id: "stride",
     name: "Stride",
     description: "Task planning & focus app",
+    logo: "/stridelogo.png",
   },
   {
     id: "platform",
     name: "Smart Productivity (Platform)",
     description: "Website & ecosystem",
+    logo: "/smartproductivitylogo.png",
   },
 ];
 
@@ -45,13 +48,20 @@ export function ProductSelectorSection() {
                 <Card
                   onClick={() => handleProductSelect(product.id)}
                   className={cn(
-                    "bg-background p-8 text-center cursor-pointer transition-all duration-300 hover:-translate-y-1",
+                    "bg-background p-8 text-center cursor-pointer transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center h-full",
                     selectedProduct === product.id
                       ? "border-primary/50 ring-2 ring-primary/30"
                       : "border-border hover:border-foreground/30"
                   )}
                 >
-                  <h3 className="text-2xl font-bold text-foreground">
+                    <Image
+                        src={product.logo}
+                        alt={`${product.name} Logo`}
+                        width={48}
+                        height={48}
+                        className={cn(product.id === 'stride' && 'border rounded-lg')}
+                    />
+                  <h3 className="mt-4 text-2xl font-bold text-foreground">
                     {product.name}
                   </h3>
                   <p className="mt-2 text-lg text-muted-foreground">
