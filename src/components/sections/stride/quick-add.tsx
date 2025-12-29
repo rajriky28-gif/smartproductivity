@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/fade-in";
+import Image from "next/image";
 
 export function QuickAddSection() {
   return (
@@ -24,10 +25,18 @@ export function QuickAddSection() {
             </div>
           </FadeIn>
           <FadeIn direction="left" delay={200}>
-            <div className="bg-muted rounded-xl p-8 h-96 flex items-center justify-center">
-                <p className="text-muted-foreground italic">
-                    [Animated text to structured task transformation]
-                </p>
+            <div className="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+              <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+              <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+              <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+              <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+              <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-zinc-800">
+                  <div className="w-full h-full flex items-center justify-center bg-muted">
+                      <p className="text-muted-foreground italic text-center text-sm">
+                          [Minimal Phone Mockup showing Quick Add]
+                      </p>
+                  </div>
+              </div>
             </div>
           </FadeIn>
         </div>
