@@ -43,7 +43,7 @@ export function Header() {
       >
         <Link
           href="/"
-          className="flex items-center gap-3 text-lg font-bold text-foreground transition-all duration-300"
+          className="flex items-center gap-1 text-lg font-bold text-foreground transition-all duration-300"
         >
           <Image
             src="/smartproductivitylogo.png"
