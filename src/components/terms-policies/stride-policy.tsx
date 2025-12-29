@@ -9,134 +9,171 @@ import {
 
 export function StrideTerms() {
   return (
-    <Accordion type="multiple" defaultValue={['item-0']} className="w-full">
-      <AccordionItem value="item-0">
-        <AccordionTrigger className="text-2xl">Acceptance of Terms</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            By using the Stride application ("Product"), you agree to be bound
-            by these Terms of Use. If you do not agree to these terms, please do
-            not use the Product.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-1">
-        <AccordionTrigger className="text-2xl">Eligibility</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            You must be at least 13 years old to use Stride. You agree to use
-            the Product in compliance with all applicable local, state,
-            national, and international laws. You are responsible for all
-            activities that occur under your account.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger className="text-2xl">Use of the Product</AccordionTrigger>
-        <AccordionContent>
-          <p>You agree not to:</p>
-          <ul>
-            <li>
-              Misuse, abuse, or disrupt the service, including attempting to
-              gain unauthorized access.
-            </li>
-            <li>
-              Use the Product for any illegal or unauthorized purpose.
-            </li>
-            <li>
-              Resell or charge others for use of or access to the Product.
-            </li>
-          </ul>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger className="text-2xl">User Content & Data</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            You retain full ownership of the data you create in Stride, including
-            your tasks, notes, and other content ("User Content"). We do not
-            claim any ownership over your User Content. By using Stride, you
-            grant us a limited license solely to process, store, and display
-            your data as necessary to provide the service to you.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-4">
-        <AccordionTrigger className="text-2xl">Privacy & Data Handling</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            Your privacy is paramount. Our data handling practices are detailed
-            in our Privacy Policy, which is an integral part of these terms.
-          </p>
-          <Link href="/privacy?product=stride" className="text-primary hover:underline">
-            View Stride Privacy Policy →
-          </Link>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-5">
-        <AccordionTrigger className="text-2xl">Intellectual Property</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            All rights, title, and interest in and to the Stride application
-            itself—including its design, branding, code, and features—are the
-            exclusive property of Smart Productivity. You may not copy, modify,
-            or redistribute any part of the Product without our express written
-            permission.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-6">
-        <AccordionTrigger className="text-2xl">Availability & Changes</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            We strive to ensure Stride is reliable and available, but we cannot
-            guarantee uninterrupted service. We reserve the right to modify or
-            discontinue features at our discretion, with a commitment to
-            thoughtful evolution over disruptive change.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-7">
-        <AccordionTrigger className="text-2xl">Termination</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            You may stop using Stride at any time. We reserve the right to
-            suspend or terminate your access to the service if you violate
-            these terms or if we are required to do so by law.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-8">
-        <AccordionTrigger className="text-2xl">Limitation of Liability</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            To the maximum extent permitted by law, Smart Productivity shall not
-            be liable for any indirect, incidental, or consequential damages
-            arising out of your use of Stride. You use the Product at your own
-            risk.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-9">
-        <AccordionTrigger className="text-2xl">Governing Law</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            These terms shall be governed by the laws of India, without regard
-            to its conflict of law provisions.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-       <AccordionItem value="item-10">
-        <AccordionTrigger className="text-2xl">Changes to These Terms</AccordionTrigger>
-        <AccordionContent>
-          <p>
-            We may update these terms from time to time. Any changes will be
-            posted on this page, and the "Last updated" date will be revised.
-            Your continued use of the Product after changes constitutes your
-            acceptance of the new terms.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <>
+      <p>
+        Please read these Terms of Use (&quot;Terms&quot;) carefully before using the Stride mobile
+        application (the &quot;Service&quot;) operated by Smart Productivity (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).
+      </p>
+      <p className="mt-4">
+        By accessing or using the Service, you agree to be bound by these Terms. If you
+        disagree with any part of the terms, then you may not access the Service.
+      </p>
+      <Accordion type="multiple" defaultValue={['item-0']} className="w-full mt-6">
+        <AccordionItem value="item-0">
+          <AccordionTrigger className="text-2xl">
+            1. Nature of the Service (Offline-First)
+          </AccordionTrigger>
+          <AccordionContent>
+            <p>Stride is designed as an offline-first, local storage application.</p>
+            <ul className="list-disc pl-6 mt-2 space-y-2">
+              <li>
+                <strong>Local Data:</strong> By using this Service, you acknowledge and agree
+                that all data you create (including tasks, notes, and schedules) is stored
+                exclusively on the internal memory of your device.
+              </li>
+              <li>
+                <strong>No Cloud Backup:</strong> We do not maintain copies of your task lists
+                on our servers. We do not provide cloud synchronization services between
+                devices.
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-2xl">2. Accounts</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              To access the app, you may be required to create an account (via Email or
+              Google Login).
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-2">
+              <li>
+                <strong>Purpose of Account:</strong> Your account is strictly used for
+                authentication (logging you in). It does not serve as a cloud storage
+                account for your content.
+              </li>
+              <li>
+                <strong>Security:</strong> You are responsible for safeguarding the password
+                you use to access the Service. You agree not to disclose your password to any
+                third party.
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger className="text-2xl">
+            3. Data Loss & User Responsibility
+          </AccordionTrigger>
+          <AccordionContent>
+            <p>
+              You are solely responsible for the safety of your data. Because Stride does not
+              backup your data to the cloud, Smart Productivity is not liable for any loss of
+              data resulting from:
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-2">
+              <li>Uninstallation of the Stride application.</li>
+              <li>
+                Clearing the application&apos;s cache or storage in your device settings.
+              </li>
+              <li>Loss, theft, or damage of your mobile device.</li>
+              <li>Operating system errors or device factory resets.</li>
+            </ul>
+            <p className="mt-4">
+              If you switch devices, you understand that your tasks will not automatically
+              transfer to the new device.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger className="text-2xl">4. Intellectual Property</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              The Service and its original content (excluding Content provided by users),
+              features, and functionality are and will remain the exclusive property of Smart
+              Productivity. The Service is protected by copyright, trademark, and other laws
+              of India.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+          <AccordionTrigger className="text-2xl">5. User Content</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              You retain all rights to the text and information you enter into Stride. Since
+              this data is stored locally on your device, we do not claim ownership, nor do we
+              access or use your content for any purpose other than displaying it to you within
+              the app.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-5">
+          <AccordionTrigger className="text-2xl">6. Limitation of Liability</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              In no event shall Smart Productivity, nor its directors, employees, or partners,
+              be liable for any indirect, incidental, special, consequential, or punitive
+              damages, including without limitation:
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-2">
+              <li>Loss of data or content;</li>
+              <li>Loss of profits, use, or goodwill;</li>
+              <li>Unauthorized access to your device.</li>
+            </ul>
+            <p className="mt-4">
+              We explicitly disclaim liability for any data lost due to the local storage
+              nature of the application.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-6">
+          <AccordionTrigger className="text-2xl">7. Termination</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              We may terminate or suspend your access to the authentication services (your
+              login) immediately, without prior notice or liability, for any reason
+              whatsoever, including without limitation if you breach the Terms.
+            </p>
+            <p className="mt-4">
+              Upon termination, your right to use the Service will immediately cease. If you
+              wish to terminate your account, you may simply discontinue using the Service or
+              request account deletion via the app settings.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-7">
+          <AccordionTrigger className="text-2xl">8. Governing Law</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              These Terms shall be governed and construed in accordance with the laws of
+              India, without regard to its conflict of law provisions.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-8">
+          <AccordionTrigger className="text-2xl">9. Changes</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              We reserve the right, at our sole discretion, to modify or replace these Terms
+              at any time. By continuing to access or use our Service after those revisions
+              become effective, you agree to be bound by the revised terms.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-9">
+          <AccordionTrigger className="text-2xl">10. Contact Us</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              If you have any questions about these Terms, please contact us:
+            </p>
+             <ul className="list-none mt-2 space-y-1">
+              <li>By email: support@smart-productivity.in</li>
+              <li>
+                By visiting our website: https://smart-productivity.in
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
   );
 }
