@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
@@ -118,11 +119,8 @@ export function HelpRequestForm({ product }: HelpRequestFormProps) {
         action={formAction}
         className="space-y-6"
         onSubmit={(evt) => {
-          const formElement = evt.target as HTMLFormElement;
-          const formData = new FormData(formElement);
           form.handleSubmit(() => {
             setSubmitted(true);
-            formAction(formData);
           })(evt);
         }}
       >
