@@ -15,7 +15,7 @@ function PolicySelector() {
   const policies = [
     {
       id: "stride",
-      logo: "/stridelogo.png",
+      logo: "/logo.png",
       name: "Stride",
       description: "Task planning & focus app",
       href: "/privacy/stride"

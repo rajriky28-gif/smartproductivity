@@ -10,7 +10,7 @@ export function ProductHeaderSection() {
           <FadeIn>
             <div className="flex flex-col gap-4 text-center md:text-left">
               <Image
-                src="/stridelogo.png"
+                src="/logo.png"
                 alt="Stride Logo"
                 width={64}
                 height={64}
