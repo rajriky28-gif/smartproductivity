@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Suspense } from 'react';
 
+export const dynamic = 'force-dynamic';
 
 function AllTerms() {
     const policies = [
@@ -24,7 +25,7 @@ function AllTerms() {
     },
     {
       id: "platform",
-      logo: "/smartproductivitylogo.png",
+      logo: "/logo.png",
       name: "Smart Productivity (Platform)",
       description: "Website & ecosystem",
       lastUpdated: "December 29, 2025",

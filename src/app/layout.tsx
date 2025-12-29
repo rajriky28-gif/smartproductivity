@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'Smart Productivity',
     images: [
       {
-        url: '/smartproductivitylogo.png',
+        url: '/logo.png',
         width: 1200,
         height: 630,
       },
@@ -35,12 +35,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Smart Productivity',
     description: 'Build focus. Eliminate noise. Do meaningful work.',
-    images: ['/smartproductivitylogo.png'],
+    images: ['/logo.png'],
   },
   icons: {
-    icon: '/smartproductivitylogo.png',
-    shortcut: '/smartproductivitylogo.png',
-    apple: '/smartproductivitylogo.png',
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
 };
 
@@ -55,7 +55,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'Smart Productivity',
     url: siteUrl,
-    logo: `${siteUrl}/smartproductivitylogo.png`,
+    logo: `${siteUrl}/logo.png`,
     description: 'Build focus. Eliminate noise. Do meaningful work.',
     sameAs: [
       // Add social media links here if available

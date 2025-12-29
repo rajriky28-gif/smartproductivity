@@ -58,7 +58,7 @@ export function Header() {
         >
           {/* Desktop logo - not scrolled */}
           <Image
-            src="/smartproductivitylogo.png"
+            src="/logo.png"
             alt="Smart Productivity Logo"
             width={60}
             height={60}
@@ -66,10 +66,10 @@ export function Header() {
           />
           {/* Mobile logo */}
           <Image
-            src="/smartproductivitylogo.png"
+            src="/logo.png"
             alt="Smart Productivity Logo"
-            width={scrolled ? 32 : 40}
-            height={scrolled ? 32 : 40}
+            width={scrolled ? 40 : 40}
+            height={scrolled ? 40 : 40}
             className={cn("transition-all duration-300 md:hidden")}
           />
 
@@ -116,7 +116,7 @@ export function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Image
-                    src="/smartproductivitylogo.png"
+                    src="/logo.png"
                     alt="Smart Productivity Logo"
                     width={40}
                     height={40}
