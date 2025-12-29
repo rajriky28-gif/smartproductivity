@@ -9,6 +9,7 @@ import { FadeIn } from '@/components/fade-in';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 
 function AllTerms() {
@@ -80,7 +81,9 @@ export default function TermsPage() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <AllTerms />
+        <Suspense>
+          <AllTerms />
+        </Suspense>
         <ContactSection />
       </main>
       <Footer />

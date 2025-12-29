@@ -9,6 +9,7 @@ import { FadeIn } from '@/components/fade-in';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 function AllPolicies() {
   const policies = [
@@ -72,14 +73,15 @@ function AllPolicies() {
   );
 }
 
-
 export default function PrivacyPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <AllPolicies />
+        <Suspense>
+         <AllPolicies />
+        </Suspense>
         <ContactSection />
       </main>
       <Footer />

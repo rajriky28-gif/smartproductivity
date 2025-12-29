@@ -58,7 +58,7 @@ export function Header() {
         >
           {/* Desktop logo - not scrolled */}
           <Image
-            src="https://picsum.photos/seed/logo/60/60"
+            src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
             width={60}
             height={60}
@@ -66,7 +66,7 @@ export function Header() {
           />
           {/* Mobile logo */}
           <Image
-            src="https://picsum.photos/seed/logo/40/40"
+            src="/smartproductivitylogo.png"
             alt="Smart Productivity Logo"
             width={scrolled ? 32 : 40}
             height={scrolled ? 32 : 40}
@@ -76,9 +76,8 @@ export function Header() {
           <span
             className={cn(
               "transition-all duration-300",
-               scrolled ? "text-base" : "text-xl",
-               !scrolled && "md:inline",
-               scrolled && "md:hidden"
+               scrolled ? "text-base md:hidden" : "text-xl",
+               !scrolled && "md:inline"
             )}
           >
             Smart Productivity
@@ -117,7 +116,7 @@ export function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Image
-                    src="https://picsum.photos/seed/logo/40/40"
+                    src="/smartproductivitylogo.png"
                     alt="Smart Productivity Logo"
                     width={40}
                     height={40}
