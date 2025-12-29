@@ -79,7 +79,7 @@ export function PlatformTerms() {
             All content, branding, and design on this Platform are the
             exclusive property of Smart Productivity. You may not use our
             branding or content without permission.
-          p>
+          </p>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-6">
