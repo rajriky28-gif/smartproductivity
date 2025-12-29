@@ -61,7 +61,7 @@ export function Header() {
             alt="Smart Productivity Logo"
             width={scrolled ? 40 : 60}
             height={scrolled ? 40 : 60}
-            className={cn("transition-all duration-300 md:hidden", scrolled && "md:hidden")}
+            className={cn("transition-all duration-300 md:hidden", scrolled && "md:block")}
           />
            <Image
             src="/smartproductivitylogo.png"
@@ -72,8 +72,8 @@ export function Header() {
           />
           <span
             className={cn(
-              "transition-all duration-300 text-xl",
-               scrolled ? "md:inline" : "md:inline",
+              "transition-all duration-300",
+               scrolled ? "text-base md:hidden" : "text-xl md:inline",
               "inline" 
             )}
           >
