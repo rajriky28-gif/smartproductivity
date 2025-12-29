@@ -2,9 +2,6 @@ import { FadeIn } from "@/components/fade-in";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-const appImage = PlaceHolderImages.find((p) => p.id === "app-screenshot-abstract");
 
 export function HeroSection() {
   return (
@@ -40,16 +37,13 @@ export function HeroSection() {
               <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
               <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
               <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white">
-                {appImage && (
-                  <Image
-                    src={appImage.imageUrl}
-                    alt={appImage.description}
-                    data-ai-hint={appImage.imageHint}
+                <Image
+                    src="/home.jpeg"
+                    alt="Stride home screen"
                     width={300}
                     height={600}
                     className="object-cover w-full h-full"
                   />
-                )}
               </div>
             </div>
           </FadeIn>

@@ -1,12 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/fade-in";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import Image from "next/image";
 
 const reportItems = [
   "Time spent in focus",
@@ -14,23 +9,6 @@ const reportItems = [
   "Planning consistency",
   "Trends over the week",
 ];
-
-const chartData = [
-  { day: "Mon", tasks: 4 },
-  { day: "Tue", tasks: 6 },
-  { day: "Wed", tasks: 5 },
-  { day: "Thu", tasks: 7 },
-  { day: "Fri", tasks: 4 },
-  { day: "Sat", tasks: 2 },
-  { day: "Sun", tasks: 1 },
-];
-
-const chartConfig = {
-  tasks: {
-    label: "Tasks",
-    color: "hsl(var(--foreground))",
-  },
-};
 
 export function WeeklyReportsSection() {
   return (
@@ -68,43 +46,13 @@ export function WeeklyReportsSection() {
               <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
               <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
               <div className="rounded-[2rem] overflow-hidden w-full h-full bg-muted dark:bg-zinc-800 p-8 flex flex-col justify-center">
-                <p className="text-center font-bold text-foreground/80 mb-4">
-                  Weekly Completion
-                </p>
-                <ChartContainer
-                  config={chartConfig}
-                  className="w-full h-[200px]"
-                >
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                      data={chartData}
-                      margin={{ top: 20, right: 10, left: -20, bottom: 0 }}
-                    >
-                      <XAxis
-                        dataKey="day"
-                        stroke="hsl(var(--muted-foreground))"
-                        fontSize={12}
-                        tickLine={false}
-                        axisLine={false}
-                      />
-                      <YAxis
-                        stroke="hsl(var(--muted-foreground))"
-                        fontSize={12}
-                        tickLine={false}
-                        axisLine={false}
-                        tickFormatter={(value) => `${value}`}
-                      />
-                      <ChartTooltip
-                        cursor={false}
-                        content={<ChartTooltipContent indicator="dot" />}
-                      />
-                      <Bar dataKey="tasks" fill="hsl(var(--primary))" radius={4} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
-                 <p className="text-center text-xs text-muted-foreground mt-4">
-                  You're most productive on Thursdays.
-                </p>
+                <Image
+                    src="/report.jpeg"
+                    alt="Stride Weekly Report interface"
+                    width={300}
+                    height={600}
+                    className="object-cover w-full h-full"
+                  />
               </div>
             </div>
           </FadeIn>
