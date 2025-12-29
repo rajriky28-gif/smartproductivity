@@ -12,14 +12,14 @@ const productDetails: { [key: string]: any } = {
     logo: "/stridelogo.png",
     name: "Stride",
     description: "Task planning & focus app",
-    lastUpdated: "29 December 2025",
+    lastUpdated: "December 29, 2025",
     content: <StridePolicy />,
   },
   platform: {
     logo: "/smartproductivitylogo.png",
     name: "Smart Productivity (Platform)",
     description: "Website & ecosystem",
-    lastUpdated: "29 December 2025",
+    lastUpdated: "December 29, 2025",
     content: <PlatformPolicy />,
   },
 };
