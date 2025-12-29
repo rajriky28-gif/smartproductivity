@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,7 +49,11 @@ export function Header() {
             scrolled ? "text-base" : "text-lg"
           )}
         >
-          Smart Productivity
+          {scrolled ? (
+            <Image src="/smartproductivitylogo.png" alt="Smart Productivity Logo" width={24} height={24} className="h-6 w-6" />
+          ) : (
+            "Smart Productivity"
+          )}
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
