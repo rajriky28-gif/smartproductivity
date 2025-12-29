@@ -1,11 +1,8 @@
 import { FadeIn } from "@/components/fade-in";
 import Image from "next/image";
 import Link from "next/link";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const appImage = PlaceHolderImages.find((p) => p.id === "app-screenshot-abstract");
 
 const features = [
   "Clean task organization",
@@ -14,7 +11,6 @@ const features = [
 ];
 
 export function ProductSection() {
-  if (!appImage) return null;
 
   return (
     <section id="product" className="bg-muted py-24 sm:py-32">
@@ -57,9 +53,8 @@ export function ProductSection() {
               <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
               <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white">
                 <Image
-                  src={appImage.imageUrl}
-                  alt={appImage.description}
-                  data-ai-hint={appImage.imageHint}
+                  src="/home.jpeg"
+                  alt="Smart Tasks app screenshot"
                   width={300}
                   height={600}
                   className="object-cover w-full h-full"
