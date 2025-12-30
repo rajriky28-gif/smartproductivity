@@ -22,7 +22,7 @@ function PolicySelector() {
     },
     {
       id: "platform",
-      logo: "/logo.png",
+      logo: "/logo2.png",
       name: "Smart Productivity (Platform)",
       description: "Website & ecosystem",
       href: "/privacy/platform"
