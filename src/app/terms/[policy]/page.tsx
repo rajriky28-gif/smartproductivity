@@ -23,7 +23,7 @@ const allTerms = [
   },
   {
     id: "platform" as const,
-    logo: "/logo.png",
+    logo: "/logo2.png",
     name: "Smart Productivity (Platform)",
     description: "Website & ecosystem",
     lastUpdated: "December 29, 2025",
