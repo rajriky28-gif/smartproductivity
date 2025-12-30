@@ -15,7 +15,7 @@ type TermType = "stride" | "platform";
 const allTerms = [
   {
     id: "stride" as const,
-    logo: "/logo.png",
+    logo: "/stridelogo.png",
     name: "Stride",
     description: "Task planning & focus app",
     lastUpdated: "December 29, 2025",
