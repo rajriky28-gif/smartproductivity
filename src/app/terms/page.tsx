@@ -15,7 +15,7 @@ function TermsSelector() {
   const terms = [
     {
       id: "stride",
-      logo: "/logo.png",
+      logo: "/stridelogo.png",
       name: "Stride",
       description: "Task planning & focus app",
       href: "/terms/stride"
