@@ -38,15 +38,9 @@ export const metadata: Metadata = {
     images: ['/logo2.png'],
   },
   icons: {
-<<<<<<< HEAD
     icon: '/logo.png',
     shortcut: '/logo.png',
     apple: '/logo.png',
-=======
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
->>>>>>> 95caf164c059aa5b60d1fa58e86ade0d901dbd32
   },
 };
 
@@ -77,12 +71,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-<<<<<<< HEAD
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <link rel="shortcut icon" href="/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" type="image/png" />
-=======
->>>>>>> 95caf164c059aa5b60d1fa58e86ade0d901dbd32
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
